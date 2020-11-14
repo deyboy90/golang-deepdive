@@ -6,7 +6,7 @@
 // All types are their own and the concepts of base and derived types do not exist in Go.
 // This pattern does not provide a good design principle in a Go program.
 
-package main
+package state
 
 import "fmt"
 
@@ -53,7 +53,7 @@ func (c *Cat) Speak() {
 		"I am a mammal with a climb factor of", c.ClimbFactor)
 }
 
-func main() {
+func Execute() {
 	// Create a Dog by initializing its Animal parts and then its specific Dog attributes.
 	dog := Dog{
 		Animal: Animal{
