@@ -15,6 +15,7 @@ type anotherexample struct {
 }
 
 func StructDeclarationTypesDemo() {
+	fmt.Println("-------StructDeclarationTypesDemo--------")
 	// this is a named type
 	e1 := example{
 		flag:    true,
@@ -51,5 +52,6 @@ func StructDeclarationTypesDemo() {
 	// the structure is identitcal and compatible
 	e1 = e3
 	fmt.Println(e1)
+	fmt.Println("---------------------------------")
 
 }
