@@ -1,3 +1,3 @@
-module github.com/golang-deepdive
+module github.com/deyboy90/golang-deepdive
 
-go 1.14
+go 1.17
