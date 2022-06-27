@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/golang-deepdive/dive1-composition/grouping/behavior"
-	"github.com/golang-deepdive/dive1-composition/grouping/state"
+	"github.com/deyboy90/golang-deepdive/dive1-composition/grouping/behavior"
+	"github.com/deyboy90/golang-deepdive/dive1-composition/grouping/state"
 )
 
 func main() {
