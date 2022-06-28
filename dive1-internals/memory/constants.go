@@ -16,6 +16,7 @@ func ConstantsDemo() {
 	const third = 1 / 3.0 // KindFloat = KindFloat(1) / KindFloat(3.0)
 	fmt.Println(third)
 
+	// nolint:staticcheck
 	const zero = 1 / 3 // KindInt = KindInt(1) / KindInt(3)
 	fmt.Println(zero)
 
