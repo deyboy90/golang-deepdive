@@ -7,4 +7,5 @@ func main() {
 	memory.PassByValueDemo()
 	memory.PassByPointerReferenceDemo()
 	memory.ReturnTypesDemo()
+	memory.ConstantsDemo()
 }
