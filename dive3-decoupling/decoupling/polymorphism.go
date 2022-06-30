@@ -84,5 +84,12 @@ func PolymorphismDemo() {
 
 	// this works because we are explicitly specifying the pointer
 	_ = retreive(&z)
+
+	/**
+	The compiler is telling me that I am not allowed to use value semantics if I have chosen to use pointer semantics.
+	In other words, I am being forced to share the value with the interface since it’s not safe to make a copy of a
+	value that a pointer points to. If I chose to implement the method with pointer semantics, I am stating that a
+	value of this type isn’t safe to be copied.
+	**/
 	fmt.Println("---------------------------------")
 }

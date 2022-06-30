@@ -6,4 +6,7 @@ func main() {
 	decoupling.MethodsDemo()
 	decoupling.IndirectionDemo()
 	decoupling.PolymorphismDemo()
+	decoupling.CollectionOfInterfacesDemo()
+	decoupling.TypeAssertionDemo()
+	decoupling.EmbeddingDemo()
 }
