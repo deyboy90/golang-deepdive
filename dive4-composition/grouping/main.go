@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	behavior.Execute()
-	state.Execute()
+	behavior.GroupingByBehaviorDemo()
+	state.GroupingByStateDemo()
 }

@@ -53,7 +53,8 @@ func (c *Cat) Speak() {
 		"I am a mammal with a climb factor of", c.ClimbFactor)
 }
 
-func Execute() {
+func GroupingByStateDemo() {
+	fmt.Println("-------GroupingByStateDemo--------")
 	// Create a Dog by initializing its Animal parts and then its specific Dog attributes.
 	dog := Dog{
 		Animal: Animal{
@@ -64,7 +65,6 @@ func Execute() {
 	}
 
 	dog.Speak()
-	dog.Move()
 
 	// Create a Cat by initializing its Animal parts and then its specific Cat attributes.
 	cat := Cat{
@@ -76,7 +76,6 @@ func Execute() {
 	}
 
 	cat.Speak()
-	cat.Move()
 
 	// It's all fine until this one. This code will not compile.
 	// Here, we try to group the Cat and Dog based on the fact that they are Animals. We are trying
@@ -87,6 +86,8 @@ func Execute() {
 	// Sub-typing doesn't promote diversity. We lock types in a very small subset that can be
 	// grouped with. But when we focus on behavior, we open up entire world to us.
 	// animals := []Animal{dog, cat}
+
+	fmt.Println("---------------------------------")
 }
 
 // ----------

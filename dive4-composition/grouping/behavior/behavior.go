@@ -41,7 +41,8 @@ func (c *Cat) Speak() {
 		"I am a mammal with a climb factor of", c.ClimbFactor)
 }
 
-func Execute() {
+func GroupingByBehaviorDemo() {
+	fmt.Println("-------GroupingByBehaviorDemo--------")
 	// Create a Dog by initializing its Animal parts and then its specific Dog attributes.
 	dog := &Dog{
 		Name:       "Fido",
@@ -61,6 +62,7 @@ func Execute() {
 	for _, speaker := range speakers {
 		speaker.Speak()
 	}
+	fmt.Println("---------------------------------")
 }
 
 // ----------
