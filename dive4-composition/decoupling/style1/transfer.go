@@ -34,12 +34,6 @@ func (bd *BackupDrive) Store(d *Data) error {
 	return nil
 }
 
-// Wraps FileSystem and BackupDirve type into a single system
-type TimeMachine struct {
-	FileSystem
-	BackupDrive
-}
-
 func pull(fs *FileSystem, data []Data) (int, error) {
 	// Range over the slice of data and share each element with the FileSystem's Pull method.
 	for i := range data {
@@ -61,6 +55,12 @@ func store(bd *BackupDrive, data []Data) (int, error) {
 	return len(data), nil
 }
 
+// Wraps FileSystem and BackupDirve type into a single system
+type TimeMachine struct {
+	FileSystem
+	BackupDrive
+}
+
 // Copy knows how to pull and store data from the System.
 // Now we can call the pull and store functions, passing Xenia and Pillar through.
 func Copy(tm *TimeMachine, batch int) error {
@@ -80,7 +80,8 @@ func Copy(tm *TimeMachine, batch int) error {
 	}
 }
 
-func Execute() {
+func Style1Demo() {
+	fmt.Println("-------Style1Demo--------")
 	timeMachine := TimeMachine{
 		FileSystem{},
 		BackupDrive{},
@@ -89,4 +90,5 @@ func Execute() {
 	if err := Copy(&timeMachine, 3); err != io.EOF {
 		fmt.Println(err)
 	}
+	fmt.Println("---------------------------------")
 }

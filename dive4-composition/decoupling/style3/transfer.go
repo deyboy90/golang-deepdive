@@ -1,4 +1,4 @@
-package style2
+package style3
 
 import (
 	"fmt"
@@ -44,17 +44,6 @@ func (bd *BackupDrive) Store(d *Data) error {
 	return nil
 }
 
-type PullerStorer interface {
-	Puller
-	Storer
-}
-
-// Wraps FileSystem and BackupDrive type into a single system
-type TimeMachine struct {
-	Puller
-	Storer
-}
-
 func pull(p Puller, data []Data) (int, error) {
 	// Range over the slice of data and share each element with the FileSystem's Pull method.
 	for i := range data {
@@ -76,16 +65,15 @@ func store(s Storer, data []Data) (int, error) {
 	return len(data), nil
 }
 
-// Copy knows how to pull and store data from the System.
-// The BackupSystem interface is composed of both Puller and Storer interfaces
-// which require defining pull and store behaviors respectively
-func Copy(ps PullerStorer, batch int) error {
+// Copy fn explictly asks for a puller and a storer interface vs asking for PullerStorer
+// this makes the api more precise and focused on what exactly it needs to perform it's task
+func Copy(p Puller, s Storer, batch int) error {
 	data := make([]Data, batch)
 
 	for {
-		i, err := pull(ps, data)
+		i, err := pull(p, data)
 		if i > 0 {
-			if _, err := store(ps, data[:i]); err != nil {
+			if _, err := store(s, data[:i]); err != nil {
 				return err
 			}
 		}
@@ -96,22 +84,20 @@ func Copy(ps PullerStorer, batch int) error {
 	}
 }
 
-func Style2Demo() {
-	fmt.Println("-------Style2Demo--------")
-	// Initiatlizing a Time Machine struct which requires passing implementators
-	// Puller and Storer interface which in this case are FileSystem and BackupDrive
-	//
-	// timeMachine := TimeMachine{
-	// 	Puller: <struct which satisfies Puller interface>,
-	// 	Storer: <struct which satisfied Storer interface>,
-	// }
+func Style3Demo() {
+	fmt.Println("-------Style3Demo--------")
+	/**
+	Since the copy function explicitly asks  or a puller and storer interface so here
+	we construct them independently and pass it in.
 
-	timeMachine := TimeMachine{
-		Puller: &FileSystem{},
-		Storer: &BackupDrive{},
-	}
+	We are also getting rid of PullerStorer interface along with the idea of TimeMachine
+	struct as that's not needed anymore.
+	 **/
 
-	if err := Copy(timeMachine, 3); err != io.EOF {
+	fs := &FileSystem{}
+	bd := &BackupDrive{}
+
+	if err := Copy(fs, bd, 3); err != io.EOF {
 		fmt.Println(err)
 	}
 	fmt.Println("---------------------------------")
